@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instagram_clone/utils/colors.dart';
+import 'package:instagram_clone/widgets/text_field_input.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -10,6 +11,16 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,12 +43,32 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
 
               const SizedBox(height: 64,),
-              // text field input for email
-              TextField(
-                decoration: const InputDecoration(
-                  hintText: "Email",
-                ),
+              TextFieldInput(
+                textEditingController: _emailController,
+                hintText: "Email",
+                textInputType: TextInputType.emailAddress
               ),
+              const SizedBox(height: 24,),
+              TextFieldInput(
+                textEditingController: _passwordController,
+                hintText: "Password",
+                textInputType: TextInputType.text,
+                isPass: true,
+              ),
+              const SizedBox(height: 24,),
+              Container(
+                child: const Text("Log In"),
+                width: double.infinity,
+                alignment: Alignment.center,
+                padding: const EdgeInsets.symmetric(
+                  vertical: 12.0,
+                ),
+                decoration: const ShapeDecoration(shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(4))
+                  ), 
+                  color: blueColor
+                ),
+              )
             ],
           )
         )

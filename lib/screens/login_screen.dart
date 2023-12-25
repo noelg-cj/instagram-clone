@@ -33,6 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Flexible(child: Container(), flex: 2,),
               SvgPicture.asset(
                 "assets/images/ic_instagram.svg",
                 colorFilter: const ColorFilter.mode(
@@ -68,6 +69,21 @@ class _LoginScreenState extends State<LoginScreen> {
                   ), 
                   color: blueColor
                 ),
+              ),
+              const SizedBox(height: 12,),
+              Flexible(child: Container(), flex: 2,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    child: Text("Don't have an account? "),
+                    padding: EdgeInsets.symmetric(vertical: 8.0),
+                  ),
+                  Container(
+                    child: Text("Sign up.", style: TextStyle(fontWeight: FontWeight.bold),),
+                    padding: EdgeInsets.symmetric(vertical: 8.0),
+                  ),
+                ],
               )
             ],
           )

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:instagram_clone/resources/auth_methods.dart';
 import 'package:instagram_clone/utils/colors.dart';
 import 'package:instagram_clone/widgets/text_field_input.dart';
 
@@ -85,17 +86,28 @@ class _SignupScreenState extends State<SignupScreen> {
                 textInputType: TextInputType.text
               ),
               const SizedBox(height: 24,),
-              Container(
-                child: const Text("Sign up"),
-                width: double.infinity,
-                alignment: Alignment.center,
-                padding: const EdgeInsets.symmetric(
-                  vertical: 12.0,
-                ),
-                decoration: const ShapeDecoration(shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(4))
-                  ), 
-                  color: blueColor
+              InkWell(
+                onTap: () async { 
+                  String user = await AuthMethods().signUpUser(
+                  email: _emailController.text,
+                  password: _passwordController.text,
+                  username: _usernameController.text,
+                  bio: _bioController.text,
+                  );
+                  print("user: " + user);
+                },
+                child: Container(
+                  child: const Text("Sign up"),
+                  width: double.infinity,
+                  alignment: Alignment.center,
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 12.0,
+                  ),
+                  decoration: const ShapeDecoration(shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(4))
+                    ), 
+                    color: blueColor
+                  ),
                 ),
               ),
               const SizedBox(height: 12,),

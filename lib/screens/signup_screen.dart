@@ -8,7 +8,6 @@ import 'package:instagram_clone/utils/colors.dart';
 import 'package:instagram_clone/utils/utils.dart';
 import 'package:instagram_clone/widgets/text_field_input.dart';
 
-
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
 
@@ -116,6 +115,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   password: _passwordController.text,
                   username: _usernameController.text,
                   bio: _bioController.text,
+                  file: _image!
                   );
                   print("user: " + user);
                 },
